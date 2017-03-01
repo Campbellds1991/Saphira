@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26206.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saphira", "Saphira\Saphira.csproj", "{6EED8121-009F-4E24-B3CF-F06EB791C2DF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Saphira", "Saphira\Saphira.csproj", "{C1D4F546-0EA7-4C92-9392-BAB026FADC71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{6EED8121-009F-4E24-B3CF-F06EB791C2DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6EED8121-009F-4E24-B3CF-F06EB791C2DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6EED8121-009F-4E24-B3CF-F06EB791C2DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6EED8121-009F-4E24-B3CF-F06EB791C2DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1D4F546-0EA7-4C92-9392-BAB026FADC71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1D4F546-0EA7-4C92-9392-BAB026FADC71}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1D4F546-0EA7-4C92-9392-BAB026FADC71}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1D4F546-0EA7-4C92-9392-BAB026FADC71}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
