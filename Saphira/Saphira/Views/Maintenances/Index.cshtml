@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Saphira.Models.Maintenance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PreServCond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PostServCond)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DescOfService)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServDateIn)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServDateOut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cost)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PreServCond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PostServCond)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DescOfService)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServDateIn)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServDateOut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cost)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

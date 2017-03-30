@@ -1,0 +1,74 @@
+﻿@model Saphira.Models.Maintenance
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Maintenance</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ServiceCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServiceCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PreServCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PreServCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostServCond)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostServCond)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescOfService)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescOfService)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServDateIn)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServDateIn)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ServDateOut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ServDateOut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cost)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
