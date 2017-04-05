@@ -1,12 +1,12 @@
 ﻿@model Saphira.Models.Maintenance
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Edit";
 }
 
-<h2>Create</h2>
+<h2>Edit</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
     
@@ -14,6 +14,24 @@
         <h4>Maintenance</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Perso_LoggedBy, "Perso_LoggedBy", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Perso_LoggedBy", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Perso_LoggedBy, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Equip_Serviced, "Equip_Serviced", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("Equip_Serviced", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Equip_Serviced, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="form-group">
             @Html.LabelFor(model => model.ServiceCode, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -71,8 +89,19 @@
         </div>
 
         <div class="form-group">
+            @Html.LabelFor(model => model.ServicedBy, "ServicedBy", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("ServicedBy", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ServicedBy, "", new { @class = "text-danger" })
+                <div>
+                    @Html.ActionLink("Add", "Create", "People") | @Html.ActionLink("Edit", "Index", "People")
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

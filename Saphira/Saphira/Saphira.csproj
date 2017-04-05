@@ -149,9 +149,26 @@
     <Compile Include="Controllers\EmployeeController.cs" />
     <Compile Include="Controllers\EquipmentController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MaintenancesController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
+    <Compile Include="Controllers\PeopleController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704032150162_reset.cs" />
+    <Compile Include="Migrations\201704032150162_reset.Designer.cs">
+      <DependentUpon>201704032150162_reset.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704032304101_revisedEquipment.cs" />
+    <Compile Include="Migrations\201704032304101_revisedEquipment.Designer.cs">
+      <DependentUpon>201704032304101_revisedEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704041045187_PhoneRefactor.cs" />
+    <Compile Include="Migrations\201704041045187_PhoneRefactor.Designer.cs">
+      <DependentUpon>201704041045187_PhoneRefactor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201704050135439_BuildPersonTable.cs" />
+    <Compile Include="Migrations\201704050135439_BuildPersonTable.Designer.cs">
+      <DependentUpon>201704050135439_BuildPersonTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\IdentityModel.cs" />
@@ -160,10 +177,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
-    <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -175,10 +188,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="Properties\PublishProfiles\Saphira - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -223,11 +232,21 @@
     <Content Include="Views\Equipment\Details.cshtml" />
     <Content Include="Views\Equipment\Edit.cshtml" />
     <Content Include="Views\Equipment\Index.cshtml" />
-    <Content Include="Views\Maintenances\Create.cshtml" />
-    <Content Include="Views\Maintenances\Delete.cshtml" />
-    <Content Include="Views\Maintenances\Details.cshtml" />
-    <Content Include="Views\Maintenances\Edit.cshtml" />
-    <Content Include="Views\Maintenances\Index.cshtml" />
+    <Content Include="Views\Maintenance\Create.cshtml" />
+    <Content Include="Views\Maintenance\Delete.cshtml" />
+    <Content Include="Views\Maintenance\Details.cshtml" />
+    <Content Include="Views\Maintenance\Edit.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Accounts\Create.cshtml" />
+    <Content Include="Views\Accounts\Delete.cshtml" />
+    <Content Include="Views\Accounts\Details.cshtml" />
+    <Content Include="Views\Accounts\Edit.cshtml" />
+    <Content Include="Views\Accounts\Index.cshtml" />
+    <Content Include="Views\People\Create.cshtml" />
+    <Content Include="Views\People\Delete.cshtml" />
+    <Content Include="Views\People\Details.cshtml" />
+    <Content Include="Views\People\Edit.cshtml" />
+    <Content Include="Views\People\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="ADODB">
@@ -251,7 +270,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Accounts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201704032150162_reset.resx">
+      <DependentUpon>201704032150162_reset.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704032304101_revisedEquipment.resx">
+      <DependentUpon>201704032304101_revisedEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704041045187_PhoneRefactor.resx">
+      <DependentUpon>201704041045187_PhoneRefactor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201704050135439_BuildPersonTable.resx">
+      <DependentUpon>201704050135439_BuildPersonTable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

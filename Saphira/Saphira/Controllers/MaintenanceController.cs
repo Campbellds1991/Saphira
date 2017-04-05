@@ -10,17 +10,18 @@ using Saphira.Models;
 
 namespace Saphira.Controllers
 {
-    public class MaintenancesController : Controller
+    public class MaintenanceController : Controller
     {
         private SaphiraDB db = new SaphiraDB();
 
-        // GET: Maintenances
+        // GET: Maintenance
         public ActionResult Index()
         {
-            return View(db.Maintenances.ToList());
+            var maintenances = db.Maintenances.Include(m => m.employee).Include(m => m.equipment).Include(m => m.person);
+            return View(maintenances.ToList());
         }
 
-        // GET: Maintenances/Details/5
+        // GET: Maintenance/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,18 +36,21 @@ namespace Saphira.Controllers
             return View(maintenance);
         }
 
-        // GET: Maintenances/Create
+        // GET: Maintenance/Create
         public ActionResult Create()
         {
+            ViewBag.Perso_LoggedBy = new SelectList((from emp in db.Employees select new { emp.Last, emp.First } ).AsEnumerable().Select(e => e.Last+", "+e.First),"ID");
+            ViewBag.Equip_Serviced = new SelectList(db.Equipments, "Id", "Type");
+            ViewBag.ServicedBy = new SelectList(db.People, "Id", "Affiliation");
             return View();
         }
 
-        // POST: Maintenances/Create
+        // POST: Maintenance/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ServiceCode,PreServCond,PostServCond,DescOfService,ServDateIn,ServDateOut,Cost")] Maintenance maintenance)
+        public ActionResult Create([Bind(Include = "Id,Perso_LoggedBy,Equip_Serviced,ServiceCode,PreServCond,PostServCond,DescOfService,ServDateIn,ServDateOut,Cost,ServicedBy")] Maintenance maintenance)
         {
             if (ModelState.IsValid)
             {
@@ -55,10 +59,13 @@ namespace Saphira.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.Perso_LoggedBy = new SelectList(db.Employees, "Id", "First", maintenance.Perso_LoggedBy);
+            ViewBag.Equip_Serviced = new SelectList(db.Equipments, "Id", "Type", maintenance.Equip_Serviced);
+            ViewBag.ServicedBy = new SelectList(db.People, "Id", "Affiliation", maintenance.ServicedBy);
             return View(maintenance);
         }
 
-        // GET: Maintenances/Edit/5
+        // GET: Maintenance/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -70,15 +77,18 @@ namespace Saphira.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Perso_LoggedBy = new SelectList(db.Employees, "Id", "First", maintenance.Perso_LoggedBy);
+            ViewBag.Equip_Serviced = new SelectList(db.Equipments, "Id", "Type", maintenance.Equip_Serviced);
+            ViewBag.ServicedBy = new SelectList(db.People, "Id", "Affiliation", maintenance.ServicedBy);
             return View(maintenance);
         }
 
-        // POST: Maintenances/Edit/5
+        // POST: Maintenance/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ServiceCode,PreServCond,PostServCond,DescOfService,ServDateIn,ServDateOut,Cost")] Maintenance maintenance)
+        public ActionResult Edit([Bind(Include = "Id,Perso_LoggedBy,Equip_Serviced,ServiceCode,PreServCond,PostServCond,DescOfService,ServDateIn,ServDateOut,Cost,ServicedBy")] Maintenance maintenance)
         {
             if (ModelState.IsValid)
             {
@@ -86,10 +96,13 @@ namespace Saphira.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Perso_LoggedBy = new SelectList(db.Employees, "Id", "First", maintenance.Perso_LoggedBy);
+            ViewBag.Equip_Serviced = new SelectList(db.Equipments, "Id", "Type", maintenance.Equip_Serviced);
+            ViewBag.ServicedBy = new SelectList(db.People, "Id", "Affiliation", maintenance.ServicedBy);
             return View(maintenance);
         }
 
-        // GET: Maintenances/Delete/5
+        // GET: Maintenance/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -104,7 +117,7 @@ namespace Saphira.Controllers
             return View(maintenance);
         }
 
-        // POST: Maintenances/Delete/5
+        // POST: Maintenance/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

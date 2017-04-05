@@ -12,6 +12,15 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.employee.First)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.equipment.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.person.Affiliation)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ServiceCode)
         </th>
         <th>
@@ -37,6 +46,15 @@
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.employee.First)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.equipment.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.person.Affiliation)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ServiceCode)
         </td>

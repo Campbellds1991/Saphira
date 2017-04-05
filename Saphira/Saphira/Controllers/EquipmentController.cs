@@ -17,7 +17,8 @@ namespace Saphira.Controllers
         // GET: Equipment
         public ActionResult Index()
         {
-            return View(db.Equipments.ToList());
+            var equipments = db.Equipments.Include(e => e.employee);
+            return View(equipments.ToList());
         }
 
         // GET: Equipment/Details/5
@@ -38,6 +39,7 @@ namespace Saphira.Controllers
         // GET: Equipment/Create
         public ActionResult Create()
         {
+            ViewBag.AssignedTo = new SelectList(db.Employees, "Id", "First");
             return View();
         }
 
@@ -55,6 +57,7 @@ namespace Saphira.Controllers
                 return RedirectToAction("Index");
             }
 
+            ViewBag.AssignedTo = new SelectList(db.Employees, "Id", "First", equipment.AssignedTo);
             return View(equipment);
         }
 
@@ -70,6 +73,7 @@ namespace Saphira.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.AssignedTo = new SelectList(db.Employees, "Id", "First", equipment.AssignedTo);
             return View(equipment);
         }
 
@@ -86,6 +90,7 @@ namespace Saphira.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.AssignedTo = new SelectList(db.Employees, "Id", "First", equipment.AssignedTo);
             return View(equipment);
         }
 

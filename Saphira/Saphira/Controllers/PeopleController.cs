@@ -10,107 +10,107 @@ using Saphira.Models;
 
 namespace Saphira.Controllers
 {
-    public class EmployeeController : Controller
+    public class PeopleController : Controller
     {
         private SaphiraDB db = new SaphiraDB();
 
-        // GET: Employee
+        // GET: People
         public ActionResult Index()
         {
-            return View(db.Employees.ToList());
+            return View(db.People.ToList());
         }
 
-        // GET: Employee/Details/5
+        // GET: People/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(person);
         }
 
-        // GET: Employee/Create
+        // GET: People/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Employee/Create
+        // POST: People/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,First,Last,Middle,PrimaryPhone,SecondaryPhone,Email,PayRate,Shift,StartDate,EndDate,FullTime,Volunteer")] Employee employee)
+        public ActionResult Create([Bind(Include = "Id,Affiliation,First,Last,PrimaryPhone,SecondaryPhone,Email")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Employees.Add(employee);
+                db.People.Add(person);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(employee);
+            return View(person);
         }
 
-        // GET: Employee/Edit/5
+        // GET: People/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(person);
         }
 
-        // POST: Employee/Edit/5
+        // POST: People/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,First,Last,Middle,PrimaryPhone,SecondaryPhone,Email,PayRate,Shift,StartDate,EndDate,FullTime,Volunteer")] Employee employee)
+        public ActionResult Edit([Bind(Include = "Id,Affiliation,First,Last,PrimaryPhone,SecondaryPhone,Email")] Person person)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(employee).State = EntityState.Modified;
+                db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(employee);
+            return View(person);
         }
 
-        // GET: Employee/Delete/5
+        // GET: People/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Employee employee = db.Employees.Find(id);
-            if (employee == null)
+            Person person = db.People.Find(id);
+            if (person == null)
             {
                 return HttpNotFound();
             }
-            return View(employee);
+            return View(person);
         }
 
-        // POST: Employee/Delete/5
+        // POST: People/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Employee employee = db.Employees.Find(id);
-            db.Employees.Remove(employee);
+            Person person = db.People.Find(id);
+            db.People.Remove(person);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
