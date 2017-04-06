@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Saphira.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
+using System.Web.UI.WebControls;
 
 namespace Saphira.Controllers
 {
@@ -10,21 +13,38 @@ namespace Saphira.Controllers
 	{
 		public ActionResult Index()
 		{
-			return View();
+			if (Session["UserID"] != null)
+			{
+				return View();
+			}
+			else
+			{
+				return RedirectToAction("Login");
+			}			
 		}
-
-		public ActionResult About()
+		public ActionResult Login()
 		{
-			ViewBag.Message = "Your application description page.";
-
-			return View();
+			SaphiraDB db = new SaphiraDB();
+			return View(db.Accounts);
 		}
-
-		public ActionResult Contact()
+		public ActionResult Login(Account objUser)
 		{
-			ViewBag.Message = "Your contact page.";
-
-			return View();
+			if (ModelState.IsValid)
+			{
+				using (SaphiraDB db = new SaphiraDB())
+				{
+					var obj = db.Accounts.Where(a => a.UserName.Equals(objUser.UserName) && a.Password.Equals(objUser.Password)).FirstOrDefault();
+					if (obj != null)
+					{
+						Session["UserID"] = obj.ID.ToString();
+						Session["UserName"] = obj.UserName.ToString();
+						return RedirectToAction("UserDashBoard");
+					}
+				}
+			}
+			return View(objUser);
 		}
+				
+
 	}
 }
